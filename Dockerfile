@@ -23,4 +23,4 @@ RUN uv sync --frozen --no-dev
 ENV PATH="/app/.venv/bin:$PATH"
 
 # Establecer el punto de entrada para ejecutar el archivo Homepage.py
-CMD ["uv", "run", "streamlit", "run", "Homepage", "dev", "--host", "0.0.0.0", "--port", "8080", "src/Homepage.py"]
+CMD ["uv", "run", "streamlit", "run", "src/Homepage.py", "--server.address=0.0.0.0" "--server.port=8080"]
