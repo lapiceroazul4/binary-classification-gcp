@@ -2,14 +2,31 @@ import streamlit as st
 import torch
 import os 
 
+from io import BytesIO
+from google.cloud import storage
 from PIL import Image
 from torchvision import transforms
 from model import CNNModel  # Asegúrate de tener el modelo definido en model.py
 
 
+##### GCS
+
+storage_client = storage.Client()
+
+# Bucket y archivo en GCS
+bucket_name = 'inferencia-test-gcp'
+blob_name = 'model_checkpoint.pth'
+bucket = storage_client.get_bucket(bucket_name)
+blob = bucket.blob(blob_name)
+
+
 # Cargar el modelo
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNModel(num_classes=2).to(device)
+
+# Leer el archivo desde GCS
+checkpoint_data = blob.download_as_string()
+checkpoint = torch.load(BytesIO(checkpoint_data), map_location=device)
 
 checkpoint_path = os.path.join(os.path.dirname(__file__), '..', "model_checkpoint.pth")
 checkpoint = torch.load(checkpoint_path, map_location=device)
