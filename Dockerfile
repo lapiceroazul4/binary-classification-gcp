@@ -11,18 +11,16 @@ ENV UV_COMPILE_BYTECODE=1
 COPY pyproject.toml uv.lock ./
 
 # Instalar las dependencias del proyecto sin incluir el código fuente
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-install-project --no-dev
+RUN uv sync --frozen --no-install-project --no-dev
 
 # Copiar el código fuente del proyecto
 COPY . .
 
 # Instalar las dependencias del proyecto con el código fuente incluido
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev
 
 # Añadir el entorno virtual al PATH
 ENV PATH="/app/.venv/bin:$PATH"
 
 # Establecer el punto de entrada para ejecutar el archivo Homepage.py
-CMD ["uv", "run", "streamlit", "run", "Homepage", "dev", "--host", "0.0.0.0", "--port", "8080" "src/Homepage.py"]
+CMD ["uv", "run", "streamlit", "run", "Homepage", "dev", "--host", "0.0.0.0", "--port", "8080", "src/Homepage.py"]
