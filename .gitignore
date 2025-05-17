@@ -1,0 +1,4 @@
+.venv
+aerobic-form-455618-f8-7bb65567b212.json
+__pycache__/
+src/model_checkpoint.pth

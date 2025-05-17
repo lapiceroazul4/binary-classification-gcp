@@ -1,10 +1,12 @@
 import streamlit as st
+import os
 
 from PIL import Image
 
 
 # Mostrar imagen explicativa
-image = Image.open("assets/Arquitectura.png")
+image_path = os.path.join(os.getcwd(), "src", "assets", "Arquitectura.png")
+image = Image.open(image_path)
 st.image(image, caption="Arquitectura de la Red Neuronal")
 
 st.title("Arquitectura de la Red Neuronal")

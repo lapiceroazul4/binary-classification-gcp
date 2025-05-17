@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 from PIL import Image
 
@@ -32,7 +33,8 @@ st.write("""
     En este proyecto, nos enfocamos en la clasificación de imagen, donde el objetivo es determinar si una persona tiene maquillaje o no.""")
 
 # Mostrar imagen explicativa
-image = Image.open("assets/classification-object-detection.png")
+image_path = os.path.join(os.getcwd(), "src", "assets", "classification-object-detection.png")
+image = Image.open(image_path)
 st.image(image, caption="Classification vs Object Detection")
 
 st.title("Clasificación Makeup vs No Makeup")
@@ -45,5 +47,6 @@ st.write("""
     """)
 
 st.subheader("Ejemplo de entrada")
-image2 = Image.open("assets/makeup-933.png")
+image_path2 = os.path.join(os.getcwd(), "src", "assets", "makeup1000.jpeg")
+image2 = Image.open(image_path2)
 st.image(image2, caption="Input Example")
