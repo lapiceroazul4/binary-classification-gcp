@@ -1,6 +1,7 @@
-<p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=cyan&size=25&center=true&vCenter=true&width=600&height=100&lines=Binary+Classification;Deploy+on+GCP;Makeup or not Makeup;">
-</p>
+<div style="display: flex; justify-content: center;">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=00FFFF&size=25&center=true&vCenter=true&width=600&height=100&lines=SegFormer+Implementation;Computer+Vision;" alt="Typing SVG">
+</div>
+
 
 This project focuses on **image classification** using a **Convolutional Neural Network (CNN)**. It utilizes **Streamlit** for the interactive user interface, which allows users to upload images and receive real-time predictions of whether a person is wearing **Makeup** or not. The model is trained using a CNN architecture and is deployed using **Google Cloud Storage (GCS)** to serve the model checkpoint.
 
